@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zac Robinson</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .viewer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding: 2rem;
+        }
+
+        .viewer img {
+            width: 75vmin;
+            height: 75vmin;
+            object-fit: contain;
+        }
+
+        .viewer h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            color: #ccc;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" style="text-decoration: none;">
+            <h1>Zac Robinson</h1>
+        </a>
+        <div class="links">
+            <a href="https://instagram.com/matr.antimatter" target="_blank">@matr.antimatter</a>
+            <a href="mailto:zacrobinson84@gmail.com">zacrobinson84@gmail.com</a>
+        </div>
+    </header>
+
+    <main class="viewer" id="viewer">
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Zac Robinson</p>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const imgSrc = params.get('img');
+        const title = params.get('title');
+        const viewer = document.getElementById('viewer');
+
+        if (imgSrc) {
+            document.title = (title || 'Artwork') + ' — Zac Robinson';
+            viewer.innerHTML = `
+                <img src="${imgSrc}" alt="${title || 'Artwork'}">
+                <h2>${title || ''}</h2>
+                <a href="index.html" class="back-link">← Back</a>
+            `;
+        }
+    </script>
+</body>
+</html>
